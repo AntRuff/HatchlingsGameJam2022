@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        zoom = -100;
+
     }
 
     private void Update()
