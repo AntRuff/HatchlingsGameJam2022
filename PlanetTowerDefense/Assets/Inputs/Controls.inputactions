@@ -17,7 +17,7 @@
                 {
                     "name": "Rotate",
                     "type": "Value",
-                    "id": "aebf109f-9462-4566-a93f-2591f6817c10",
+                    "id": "ccd6d1f5-076f-440e-a931-d1c0576e0866",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -82,7 +82,7 @@
                 },
                 {
                     "name": "",
-                    "id": "a9e146a8-bb29-427c-8af7-cb55eff0640b",
+                    "id": "95fa95d7-e928-4d51-8e6c-54e12b8d753a",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
@@ -92,6 +92,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Camera",
+            "id": "cf04c2b5-47d8-47a2-8c65-a9d8403f73e3",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": []
