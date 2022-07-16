@@ -17,7 +17,7 @@ public class TowerSpawner : MonoBehaviour
     private void Update()
     {
         spawnAtMousePosition();
-
+        moveSpawnGhost();
 
     }
 
