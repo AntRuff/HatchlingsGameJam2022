@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class TowerSpawner : MonoBehaviour
 {
     [SerializeField] GameObject tower;
+    [SerializeField] GameObject spawnGhost;
 
     private void Start()
     {
@@ -27,8 +28,13 @@ public class TowerSpawner : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit))
             {
-                Instantiate(tower, hit.point, Quaternion.identity);
+                Instantiate(tower, hit.point, Quaternion.LookRotation(hit.point, hit.normal));
             }
         }
+    }
+
+    private void moveSpawnGhost()
+    {
+        
     }
 }
