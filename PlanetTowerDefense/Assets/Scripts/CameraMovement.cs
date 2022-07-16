@@ -10,6 +10,7 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 previousPosition;
 
+    [SerializeField]
     private int zoom;
 
     private void Start()
@@ -41,18 +42,15 @@ public class CameraMovement : MonoBehaviour
             previousPosition = cam.ScreenToViewportPoint(Mouse.current.position.ReadValue());
         }
 
-        if (Mouse.current.scroll.ReadValue().y < 0)
+        if(Mouse.current.scroll.ReadValue().y > 0)
         {
-            zoom = zoom - 1;
-            cam.transform.Translate(new Vector3(x: 0, y: 0, z: zoom));
+            Debug.Log("mouse up");
         }
 
         if (Mouse.current.scroll.ReadValue().y > 0)
         {
-            zoom = zoom + 1;
-            cam.transform.Translate(new Vector3(x: 0, y: 0, z: zoom));
+            Debug.Log("mouse down");
         }
-
 
     }
 }
