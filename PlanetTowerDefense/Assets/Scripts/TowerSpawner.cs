@@ -7,6 +7,7 @@ public class TowerSpawner : MonoBehaviour
 {
     [SerializeField] GameObject tower;
     [SerializeField] GameObject spawnGhost;
+    [SerializeField] GameObject spawnObject;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class TowerSpawner : MonoBehaviour
     private void Update()
     {
         spawnAtMousePosition();
+
 
     }
 
@@ -29,12 +31,20 @@ public class TowerSpawner : MonoBehaviour
             if(Physics.Raycast(ray, out hit))
             {
                 Instantiate(tower, hit.point, Quaternion.LookRotation(hit.point, hit.normal));
+                Debug.DrawLine(hit.point, hit.normal);
+                Debug.Log(hit.normal);
             }
+            Debug.DrawRay(hit.point, hit.normal);
         }
     }
 
     private void moveSpawnGhost()
     {
-        
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+
+        Physics.Raycast(ray, out hit);
+        spawnGhost.transform.SetPositionAndRotation(hit.point, Quaternion.LookRotation(hit.point, hit.normal));
     }
+
 }
