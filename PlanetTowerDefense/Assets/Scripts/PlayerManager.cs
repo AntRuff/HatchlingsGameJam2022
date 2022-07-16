@@ -26,8 +26,7 @@ public class PlayerManager : MonoBehaviour
     void OnDisable() => controls.Player.Disable();
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
+    void FixedUpdate(){
         RotateCamera();
         Move();
     }

@@ -44,6 +44,42 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""f6c54cae-8c84-4403-8a9c-8559fb88ab58"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""IncrementSilver"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c3eb5bd-1b3d-4b93-bfe5-22edf07f54f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""IncrementGold"",
+                    ""type"": ""Button"",
+                    ""id"": ""19117a71-a11a-4ee0-a365-4bd417932464"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DecrementGold"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f82f4da-d1e6-498f-82d0-6d4aee72c63d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,14 +148,52 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d389dc5d-ee72-41a1-b028-8e3147b9be5c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d6d00d6-9522-4c80-9c96-c6fa9b1c219f"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""IncrementSilver"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""392d7873-c124-4926-814d-8d65d6600cf0"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""IncrementGold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50e3f340-7cf4-4e33-8348-fecab2c30e59"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DecrementGold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""Camera"",
-            ""id"": ""cf04c2b5-47d8-47a2-8c65-a9d8403f73e3"",
-            ""actions"": [],
-            ""bindings"": []
         }
     ],
     ""controlSchemes"": []
@@ -128,8 +202,10 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
-        // Camera
-        m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_IncrementSilver = m_Player.FindAction("IncrementSilver", throwIfNotFound: true);
+        m_Player_IncrementGold = m_Player.FindAction("IncrementGold", throwIfNotFound: true);
+        m_Player_DecrementGold = m_Player.FindAction("DecrementGold", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -191,12 +267,20 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Rotate;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_IncrementSilver;
+    private readonly InputAction m_Player_IncrementGold;
+    private readonly InputAction m_Player_DecrementGold;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @IncrementSilver => m_Wrapper.m_Player_IncrementSilver;
+        public InputAction @IncrementGold => m_Wrapper.m_Player_IncrementGold;
+        public InputAction @DecrementGold => m_Wrapper.m_Player_DecrementGold;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +296,18 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Rotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
                 @Rotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
                 @Rotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @IncrementSilver.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementSilver;
+                @IncrementSilver.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementSilver;
+                @IncrementSilver.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementSilver;
+                @IncrementGold.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementGold;
+                @IncrementGold.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementGold;
+                @IncrementGold.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementGold;
+                @DecrementGold.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecrementGold;
+                @DecrementGold.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecrementGold;
+                @DecrementGold.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecrementGold;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -222,41 +318,29 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Rotate.started += instance.OnRotate;
                 @Rotate.performed += instance.OnRotate;
                 @Rotate.canceled += instance.OnRotate;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @IncrementSilver.started += instance.OnIncrementSilver;
+                @IncrementSilver.performed += instance.OnIncrementSilver;
+                @IncrementSilver.canceled += instance.OnIncrementSilver;
+                @IncrementGold.started += instance.OnIncrementGold;
+                @IncrementGold.performed += instance.OnIncrementGold;
+                @IncrementGold.canceled += instance.OnIncrementGold;
+                @DecrementGold.started += instance.OnDecrementGold;
+                @DecrementGold.performed += instance.OnDecrementGold;
+                @DecrementGold.canceled += instance.OnDecrementGold;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // Camera
-    private readonly InputActionMap m_Camera;
-    private ICameraActions m_CameraActionsCallbackInterface;
-    public struct CameraActions
-    {
-        private @Controls m_Wrapper;
-        public CameraActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputActionMap Get() { return m_Wrapper.m_Camera; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
-        public void SetCallbacks(ICameraActions instance)
-        {
-            if (m_Wrapper.m_CameraActionsCallbackInterface != null)
-            {
-            }
-            m_Wrapper.m_CameraActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-            }
-        }
-    }
-    public CameraActions @Camera => new CameraActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
-    }
-    public interface ICameraActions
-    {
+        void OnInteract(InputAction.CallbackContext context);
+        void OnIncrementSilver(InputAction.CallbackContext context);
+        void OnIncrementGold(InputAction.CallbackContext context);
+        void OnDecrementGold(InputAction.CallbackContext context);
     }
 }
