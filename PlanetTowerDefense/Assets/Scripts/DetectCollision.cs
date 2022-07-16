@@ -9,6 +9,10 @@ public class DetectCollision : MonoBehaviour
     public float collisionRadius;
     public LayerMask GroundLayer;
 
+    private void Start() {
+        Physics.IgnoreLayerCollision(0,7);
+    }
+
     public bool CheckGround(Vector3 Direction) {
         Vector3 Pos = transform.position + (Direction * bottomOffset);
         Collider[] hitColliders = Physics.OverlapSphere(Pos, collisionRadius, GroundLayer);
