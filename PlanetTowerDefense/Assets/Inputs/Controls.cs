@@ -68,7 +68,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""3D Vector"",
                     ""id"": ""5e0fe77c-01d1-46c7-b0c5-61e17627ed21"",
-                    ""path"": ""3DVector"",
+                    ""path"": ""3DVector(mode=1)"",
                     ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
@@ -205,12 +205,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Camera"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""baa06a22-21a2-498a-ba28-c2b791a85b1a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
