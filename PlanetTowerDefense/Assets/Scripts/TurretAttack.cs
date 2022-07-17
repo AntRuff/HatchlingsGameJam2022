@@ -35,6 +35,7 @@ public class TurretAttack : MonoBehaviour
             else if (Vector3.Distance(transform.position, target.transform.position) < attackRange)
             {
                 var newBullet = Instantiate(bulletPrefab);
+                gunSound.Play();
                 newBullet.transform.position = transform.position;
                 newBullet.transform.rotation = transform.rotation;
                 curAttackCooldown = 0;
