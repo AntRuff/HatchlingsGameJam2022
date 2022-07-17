@@ -68,7 +68,7 @@ public class TowerSpawner : MonoBehaviour
 
             if (hit.collider.gameObject.CompareTag("Turret"))
             {
-                spawnGhost.transform.position = new Vector3(0, 0, 0);
+                spawnGhost.transform.position = new Vector3(0, 42069, 0);
             }
             else
             {

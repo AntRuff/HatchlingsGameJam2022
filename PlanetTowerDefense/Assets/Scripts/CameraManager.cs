@@ -36,6 +36,8 @@ public class CameraManager : MonoBehaviour
         button.gameObject.SetActive(true);
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         player.GetComponent<PlayerManager>().enabled = false;
+        gameObject.GetComponent<TowerSpawner>().enabled = true;
+        Debug.Log(gameObject.GetComponent<TowerSpawner>().enabled);
     }
 
     public void SwapToPlayer()
@@ -46,6 +48,7 @@ public class CameraManager : MonoBehaviour
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         player.GetComponent<PlayerManager>().enabled = true;
         stratCam.enabled = false;
+        gameObject.GetComponent<TowerSpawner>().enabled = false;
     }
 
     public void SwapToWin()
