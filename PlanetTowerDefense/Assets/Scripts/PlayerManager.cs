@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
 
+    public AudioSource rockets;
+
     private Vector3 curDir = Vector3.zero;
     /*public Transform[] GroundChecks;
 
@@ -50,6 +52,13 @@ public class PlayerManager : MonoBehaviour
         var movement = Vector3.zero;
         if (Vector3.Distance(movementInput, Vector3.zero) > 0.1f){
             curDir = movement;
+            rockets.mute = false;
+            flame.Play();
+        }
+        else {
+            rockets.mute = true;
+            flame.Pause();
+            flame.Clear();
         }
         movement = new Vector3{
             x = movementInput.x,
