@@ -13,6 +13,8 @@ public class TurretAttack : MonoBehaviour
     [SerializeField]
     private float attackCooldown = 0.75f;
     private float curAttackCooldown = 0;
+    [SerializeField]
+    AudioSource gunSound;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +27,7 @@ public class TurretAttack : MonoBehaviour
         else if (Vector3.Distance(transform.position, target.transform.position) < attackRange)
         {
             var newBullet = Instantiate(bulletPrefab);
+            gunSound.Play();
             newBullet.transform.position = transform.position;
             newBullet.transform.rotation = transform.rotation;
             curAttackCooldown = 0;

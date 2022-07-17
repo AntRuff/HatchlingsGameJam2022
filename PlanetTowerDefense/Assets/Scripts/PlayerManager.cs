@@ -25,8 +25,9 @@ public class PlayerManager : MonoBehaviour
 
     public LayerMask GroundLayers;
     private Vector3 GroundDir;*/
-    
 
+    [SerializeField]
+    private ParticleSystem flame;
 
     void Awake() => controls = new Controls();
 

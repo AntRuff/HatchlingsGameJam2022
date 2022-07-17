@@ -19,12 +19,16 @@ public class DayNightManager : MonoBehaviour
     private float dayAngle = 60f;
     private float nightAngle = (0f - 5f);
     [SerializeField]
-    private float tranTime = 5;
+    private float tranTime = 15;
     private float curTranTime = 0;
     [SerializeField]
     private List<Silver> ilver;
     [SerializeField]
     private List<Gold> gold;
+    [SerializeField]
+    private AudioSource day;
+    [SerializeField]
+    private AudioSource night1;
 
     private void Awake()
     {
@@ -72,16 +76,21 @@ public class DayNightManager : MonoBehaviour
                         g.gameObject.SetActive(true);
                         g.Replish();
                     }
-                }
+                }                
             }
         }
         if (isNight && curTranTime < tranTime)
         {
             dayLight.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(nightAngle, -30, 0)), curTranTime);
+            day.volume = Mathf.Lerp(1, 0, curTranTime);
+            night1.volume = Mathf.Lerp(0, 1, curTranTime);
             curTranTime += Time.deltaTime;
+
         } else if (curTranTime < tranTime)
         {
             dayLight.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(dayAngle, -30, 0)), curTranTime);
+            day.volume = Mathf.Lerp(0, 1, curTranTime);
+            night1.volume = Mathf.Lerp(1, 0, curTranTime);
             curTranTime += Time.deltaTime;
         }
     }
