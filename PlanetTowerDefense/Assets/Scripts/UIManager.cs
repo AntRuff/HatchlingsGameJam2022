@@ -7,9 +7,16 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private Image loseScreen;
+    [SerializeField]
+    private Image winScreen;
 
     public void enableLossUI()
     {
         loseScreen.enabled = false;
+    }
+
+    public void enableWinUI()
+    {
+        
     }
 }
