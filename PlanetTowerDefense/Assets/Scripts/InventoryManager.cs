@@ -15,6 +15,12 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Text silver;
     [SerializeField] private Text gold;
 
+    public static InventoryManager instance;
+
+    private void Awake() {
+        instance = this;
+    }
+
     public void updateSilver(int value){
         silverCount += value;
         if (silverCount > silverMax){ silverCount = silverMax; }
