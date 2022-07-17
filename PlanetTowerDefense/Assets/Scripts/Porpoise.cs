@@ -34,6 +34,7 @@ public class Porpoise : Interactable
 
     public void WinGame()
     {
+        CameraManager.Instance.SwapToWin();
         StartCoroutine(BoldlyGo());
         engine.Play();
         engineRumble.Play();
