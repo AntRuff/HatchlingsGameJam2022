@@ -198,6 +198,78 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""StrategyControl"",
+            ""id"": ""684e1380-2f6a-46ea-9c9c-29d54f44a45b"",
+            ""actions"": [
+                {
+                    ""name"": ""Camera"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""baa06a22-21a2-498a-ba28-c2b791a85b1a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""daa37669-2ae8-467d-9513-da7925232536"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""6cfc7b54-5c4b-42a6-9439-f08eedcb910a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ca135c8e-fd22-44eb-9dca-0fd77fd384de"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""de2f626e-4706-4a0d-a925-58a8cefef39b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""aed3d1c2-984a-4a58-a7bc-decd7e3bf246"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -208,6 +280,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_RotateCamera = m_Player.FindAction("RotateCamera", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_RotatePlayer = m_Player.FindAction("RotatePlayer", throwIfNotFound: true);
+        // StrategyControl
+        m_StrategyControl = asset.FindActionMap("StrategyControl", throwIfNotFound: true);
+        m_StrategyControl_Camera = m_StrategyControl.FindAction("Camera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -320,11 +395,48 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // StrategyControl
+    private readonly InputActionMap m_StrategyControl;
+    private IStrategyControlActions m_StrategyControlActionsCallbackInterface;
+    private readonly InputAction m_StrategyControl_Camera;
+    public struct StrategyControlActions
+    {
+        private @Controls m_Wrapper;
+        public StrategyControlActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Camera => m_Wrapper.m_StrategyControl_Camera;
+        public InputActionMap Get() { return m_Wrapper.m_StrategyControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(StrategyControlActions set) { return set.Get(); }
+        public void SetCallbacks(IStrategyControlActions instance)
+        {
+            if (m_Wrapper.m_StrategyControlActionsCallbackInterface != null)
+            {
+                @Camera.started -= m_Wrapper.m_StrategyControlActionsCallbackInterface.OnCamera;
+                @Camera.performed -= m_Wrapper.m_StrategyControlActionsCallbackInterface.OnCamera;
+                @Camera.canceled -= m_Wrapper.m_StrategyControlActionsCallbackInterface.OnCamera;
+            }
+            m_Wrapper.m_StrategyControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Camera.started += instance.OnCamera;
+                @Camera.performed += instance.OnCamera;
+                @Camera.canceled += instance.OnCamera;
+            }
+        }
+    }
+    public StrategyControlActions @StrategyControl => new StrategyControlActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnRotatePlayer(InputAction.CallbackContext context);
+    }
+    public interface IStrategyControlActions
+    {
+        void OnCamera(InputAction.CallbackContext context);
     }
 }

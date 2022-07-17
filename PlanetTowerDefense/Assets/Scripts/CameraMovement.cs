@@ -8,10 +8,18 @@ public class CameraMovement : MonoBehaviour
     [SerializeField]
     private Camera cam;
 
+    private Controls controls;
+
     private Vector3 previousPosition;
 
     [SerializeField]
     private int zoom;
+
+    void Awake() => controls = new Controls();
+
+    void OnEnable() => controls.Player.Enable();
+
+    void OnDisable() => controls.Player.Disable();
 
     private void Start()
     {
@@ -52,5 +60,19 @@ public class CameraMovement : MonoBehaviour
             Debug.Log("mouse down");
         }
 
+        move();
+
+    }
+
+    public void move()
+    {
+        var movementInput = controls.StrategyControl.Camera.ReadValue<Vector2>();
+        var movement = new Vector3
+        {
+            x = movementInput.x,
+            z = movementInput.y
+        }.normalized;
+
+        cam.transform.Translate (movement * 10f * Time.deltaTime);
     }
 }
