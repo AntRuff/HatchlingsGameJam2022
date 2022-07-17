@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 5652943494459094176}
   - component: {fileID: 5330559180974297941}
   - component: {fileID: 5330559180974297943}
+  - component: {fileID: 3708668963764071541}
   m_Layer: 0
   m_Name: ThePropoise
   m_TagString: Untagged
@@ -107,7 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4987906482262945306}
-  m_LocalRotation: {x: 0.04020222, y: -0.76390773, z: 0.03539378, w: 0.6430989}
+  m_LocalRotation: {x: 0.040199984, y: -0.76391, z: 0.03539235, w: 0.6430964}
   m_LocalPosition: {x: -41.50023, y: -19.85339, z: -86.68063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -161,6 +162,23 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   tranTime: 5
+--- !u!114 &3708668963764071541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987906482262945306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f08f3f1ef23aaf646ac332f5549eb0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  silverCount: 0
+  silverMax: 300
+  goldMax: 300
+  silver: {fileID: 0}
+  gold: {fileID: 0}
 --- !u!1 &5330559181526308584
 GameObject:
   m_ObjectHideFlags: 0

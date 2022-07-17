@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoonSpawnerScript : MonoBehaviour
 {
     [SerializeField]
-    private float spawnTime = 5f;
+    private float spawnTime = 55f;
     private float curSpawnTime = 0;
     public bool isNight = false;
     [SerializeField]
@@ -37,6 +37,14 @@ public class GoonSpawnerScript : MonoBehaviour
                 curSpawnTime += Time.deltaTime;
             }
             transform.position = start + new Vector3(Mathf.Cos(curSpawnTime)*5, 0, 0); 
+        }
+    }
+    
+    public void TURNUPTHEHEAT()
+    {
+        if(spawnTime > 5)
+        {
+            spawnTime -= 5;
         }
     }
 }
