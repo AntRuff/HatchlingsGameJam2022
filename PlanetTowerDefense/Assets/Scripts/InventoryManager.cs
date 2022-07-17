@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField]
     private int silverCount = 0;
+    [SerializeField]
     private int goldCount = 0;
 
     public int silverMax = 300;
