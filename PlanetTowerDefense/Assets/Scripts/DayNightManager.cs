@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DayNightManager : MonoBehaviour
 {
-    public List<GameObject> goons;
+    public List<GameObject> goons = new List<GameObject>();
     [SerializeField]
     private float dayLength = 200f;
     [SerializeField]
@@ -15,7 +15,7 @@ public class DayNightManager : MonoBehaviour
     private GameObject dayLight;
     public static DayNightManager Instance;
     [SerializeField]
-    private List<GoonSpawnerScript> spawners;
+    private List<GoonSpawnerScript> spawners = new List<GoonSpawnerScript>();
     private float dayAngle = 60f;
     private float nightAngle = (0f - 5f);
     [SerializeField]
@@ -103,5 +103,22 @@ public class DayNightManager : MonoBehaviour
             night3.volume = Mathf.Lerp(1, 0, curTranTime);
             curTranTime += Time.deltaTime;
         }
+    }
+
+    public GameObject GetTarget(Transform pos)
+    {
+        if(goons.Count == 0)
+        {
+            return null;
+        }
+        GameObject target = goons[0];
+        foreach (GameObject g in goons)
+        {
+            if(Vector3.Distance(pos.position, g.transform.position) < Vector3.Distance(pos.position, target.transform.position))
+            {
+                target = g;
+            }
+        }
+        return target;
     }
 }

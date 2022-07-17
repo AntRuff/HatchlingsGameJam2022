@@ -19,18 +19,29 @@ public class TurretAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target.transform);
-        if (curAttackCooldown <= attackCooldown)
+       // if(target == null)
+       // {
+            target = DayNightManager.Instance.GetTarget(transform);
+      //  }
+     //   else
+      //  {
+      if(target != null)
         {
-            curAttackCooldown += Time.deltaTime;
+            transform.LookAt(target.transform);
+            if (curAttackCooldown <= attackCooldown)
+            {
+                curAttackCooldown += Time.deltaTime;
+            }
+            else if (Vector3.Distance(transform.position, target.transform.position) < attackRange)
+            {
+                var newBullet = Instantiate(bulletPrefab);
+                newBullet.transform.position = transform.position;
+                newBullet.transform.rotation = transform.rotation;
+                curAttackCooldown = 0;
+            }
         }
-        else if (Vector3.Distance(transform.position, target.transform.position) < attackRange)
-        {
-            var newBullet = Instantiate(bulletPrefab);
-            gunSound.Play();
-            newBullet.transform.position = transform.position;
-            newBullet.transform.rotation = transform.rotation;
-            curAttackCooldown = 0;
-        }
+
+      //  }
+
     }
 }

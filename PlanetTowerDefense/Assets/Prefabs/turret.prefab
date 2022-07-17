@@ -179,6 +179,7 @@ MonoBehaviour:
   attackRange: 50
   bulletPrefab: {fileID: 8271863496005218295, guid: 7222e270afd09304893a52bf12079370, type: 3}
   attackCooldown: 0.45
+  gunSound: {fileID: 0}
 --- !u!1 &1064013551252852446
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,9 +229,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  attackRange: 5
-  bulletPrefab: {fileID: 0}
+  attackRange: 20
+  bulletPrefab: {fileID: 8271863496005218295, guid: 7222e270afd09304893a52bf12079370, type: 3}
   attackCooldown: 0.75
+  gunSound: {fileID: 8276233286956045101}
 --- !u!135 &5796425429205956423
 SphereCollider:
   m_ObjectHideFlags: 0

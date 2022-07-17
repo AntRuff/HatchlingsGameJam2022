@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decayTime: 5
-  bulletSpeed: 50
+  bulletSpeed: 100

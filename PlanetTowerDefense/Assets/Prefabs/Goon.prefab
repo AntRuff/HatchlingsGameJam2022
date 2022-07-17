@@ -4943,7 +4943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  health: 20
+  health: 5
   moveEeed: 20
 --- !u!135 &-6412359353522952
 SphereCollider:

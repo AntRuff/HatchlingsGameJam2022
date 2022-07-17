@@ -17,6 +17,7 @@ public class EnemyBehavoir : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
+            DayNightManager.Instance.goons.Remove(gameObject);
             Destroy(gameObject);
         }
     }
@@ -31,6 +32,7 @@ public class EnemyBehavoir : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Bulletscript>())
         {
+            Debug.Log("Enemy Took Bullet");
             TakeDamage(1);
         }
     }
