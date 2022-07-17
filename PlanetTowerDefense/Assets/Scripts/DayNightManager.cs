@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DayNightManager : MonoBehaviour
 {
@@ -35,9 +36,13 @@ public class DayNightManager : MonoBehaviour
     private AudioSource night3;
 
 
+    public Text timer;
+
+
     private void Awake()
     {
         Instance = this;
+        timer.text = "Daylight Remaining: " + (int)(dayLength-curTime);
     }
 
 
@@ -46,6 +51,8 @@ public class DayNightManager : MonoBehaviour
         if(curTime < dayLength)
         {
             curTime += Time.deltaTime;
+            if (isNight) { timer.text = "Nighttime Remaining: " + (int)(dayLength-curTime); }
+            else { timer.text = "Daylight Remaining: " + (int)(dayLength-curTime); } 
         } else
         {
             isNight = !isNight;
