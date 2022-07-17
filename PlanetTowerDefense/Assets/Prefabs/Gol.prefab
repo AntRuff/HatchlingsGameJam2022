@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60ffd363151efa4aab3dff24861f854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: 
+  interactText: Mine Gol
   inventory: {fileID: 3708668963764071541, guid: 09356e3f672383544a53d7e177d52251, type: 3}
   mineAmount: 25
   maxMines: 3
@@ -61,7 +61,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 4}
+  m_Size: {x: 5, y: 4, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6090455376587720772
 GameObject:
