@@ -7,16 +7,10 @@ public class EnemyBehavoir : MonoBehaviour
 {
     [SerializeField]
     public Transform target;
-    private NavMeshAgent nav;
     [SerializeField]
     private int health = 20;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        nav = GetComponent<NavMeshAgent>();
-        nav.destination = target.position;
-    }
+    [SerializeField]
+    private float moveEeed;
 
     public void TakeDamage(int damage)
     {
@@ -24,6 +18,29 @@ public class EnemyBehavoir : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        transform.LookAt(target);
+        transform.position = Vector3.MoveTowards(transform.position, target.position, moveEeed*Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Bulletscript>())
+        {
+            TakeDamage(1);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+       if(collision.gameObject.transform == target)
+        {
+            //PUT DAMAGE CODE HERE
+            TakeDamage(999);
         }
     }
 }
