@@ -16,6 +16,8 @@ public class Porpoise : Interactable
     [SerializeField]
     private AudioSource engineRumble;
     public Text healthView;
+    [SerializeField]
+    private Canvas lossCanvas;
 
     private void Awake()
     {
@@ -37,7 +39,7 @@ public class Porpoise : Interactable
 
         if(health <= 0)
         {
-            //YOU LOse
+            lossCanvas.enabled = true;
         }
     }
 
