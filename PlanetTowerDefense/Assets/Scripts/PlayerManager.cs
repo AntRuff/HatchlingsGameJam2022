@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float RotateSpeed = 10f;
 
     [SerializeField] private float moveSpeed = 1.5f;
-    [SerializeField] private float accelleration = 10f;
+    [SerializeField] private float acceleration = 10f;
     [SerializeField] private float maxSpeed = 30f;
 
     [SerializeField] private Rigidbody rb;
@@ -47,11 +47,7 @@ public class PlayerManager : MonoBehaviour
 
         var movementInput = controls.Player.Movement.ReadValue<Vector3>();
         var movement = Vector3.zero;
-
-
         if (Vector3.Distance(movementInput, Vector3.zero) > 0.1f){
-            moveSpeed += accelleration * delta;
-            if (moveSpeed > maxSpeed) {moveSpeed = maxSpeed; }
             movement = new Vector3{
                 x = movementInput.x,
                 y = movementInput.y,
@@ -60,8 +56,6 @@ public class PlayerManager : MonoBehaviour
             curDir = movement;
         }
         else {
-            moveSpeed -= accelleration * delta;
-            if (moveSpeed < 0) { moveSpeed = 0; }
             movement = curDir;
         }
 
@@ -73,8 +67,8 @@ public class PlayerManager : MonoBehaviour
 
         //transform.Translate(movement.normalized * moveSpeed * delta);
 
-        if (moveSpeed == 0) { rb.AddRelativeForce(-movement.normalized * moveSpeed * delta); }
-        else { rb.AddRelativeForce(movement.normalized * moveSpeed * delta); }
+        if (moveSpeed == 0) { rb.AddRelativeForce(-movement.normalized * moveSpeed * delta, ForceMode.Acceleration); }
+        else { rb.AddRelativeForce(movement.normalized * moveSpeed * delta, ForceMode.Acceleration); }
     }
 
     //Updates Camera and player rotation every frame
