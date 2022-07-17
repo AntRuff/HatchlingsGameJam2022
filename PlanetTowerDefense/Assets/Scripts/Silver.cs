@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Silver : Interactable {
 
-    [SerializeField] private InventoryManager inventory;
+    private InventoryManager inventory;
     public int mineAmount = 25;
     private int minesRemaining;
     public int maxMines = 3;
@@ -14,6 +14,7 @@ public class Silver : Interactable {
     {
         minesRemaining = maxMines;
         textCopy = interactText;
+        inventory = InventoryManager.instance;
     }
 
     public override IEnumerator Interact(){
@@ -21,11 +22,13 @@ public class Silver : Interactable {
         if (minesRemaining > 0)
         {
             inventory.updateSilver(mineAmount);
+            FindObjectOfType<InteractionManager>().Mine();
             minesRemaining--;
             if (minesRemaining == 0)
             {
-                gameObject.GetComponentInParent<MeshRenderer>().enabled = false;
+                gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
                 gameObject.GetComponent<BoxCollider>().enabled = false;
+                gameObject.GetComponentInChildren<ParticleSystem>().Stop();
                 interactText = "";
 
                 FindObjectOfType<InteractionManager>().Exhaust();
@@ -37,6 +40,7 @@ public class Silver : Interactable {
             {
                 FindObjectOfType<InteractionManager>().Refresh();
             }
+            FindObjectOfType<InteractionManager>().StopMine();
         }
     }
 
@@ -47,6 +51,7 @@ public class Silver : Interactable {
             minesRemaining++;
             gameObject.GetComponentInParent<MeshRenderer>().enabled = true;
             gameObject.GetComponent<BoxCollider>().enabled = true;
+            gameObject.GetComponentInChildren<ParticleSystem>().Play();
             interactText = textCopy;
         }
         else

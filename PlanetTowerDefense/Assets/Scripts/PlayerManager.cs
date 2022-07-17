@@ -49,17 +49,14 @@ public class PlayerManager : MonoBehaviour
         var movementInput = controls.Player.Movement.ReadValue<Vector3>();
         var movement = Vector3.zero;
         if (Vector3.Distance(movementInput, Vector3.zero) > 0.1f){
-            movement = new Vector3{
-                x = movementInput.x,
-                y = movementInput.y,
-                z = movementInput.z
-            };
             curDir = movement;
         }
-        else {
-            movement = curDir;
-        }
-        transform.Translate(curDir * Time.deltaTime * moveSpeed);
+        movement = new Vector3{
+            x = movementInput.x,
+            y = movementInput.y,
+            z = movementInput.z
+        };
+        transform.Translate(movement * Time.deltaTime * moveSpeed);
 
 
         /*Vector3 SetGroundDir = FloorAngleCheck();

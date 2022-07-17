@@ -10,6 +10,7 @@ public class InteractionManager : MonoBehaviour
     public Text interactText;
     private bool canInteract = false;
     private Interactable action = null;
+    public AudioSource mining;
 
 
     private void Start() {
@@ -43,6 +44,14 @@ public class InteractionManager : MonoBehaviour
     {
         canInteract = true;
         interactText.enabled = true;
+    }
+
+    public void Mine(){
+        mining.Play();
+    }
+
+    public void StopMine(){
+        mining.Stop();
     }
 
     public void CallInteract(){
