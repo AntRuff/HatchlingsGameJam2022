@@ -4866,6 +4866,7 @@ MonoBehaviour:
   interactionRange: {fileID: 2491414453773027504}
   interactionTimer: 1
   interactText: {fileID: 0}
+  mining: {fileID: 0}
 --- !u!114 &2491414453773027534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4947,6 +4948,7 @@ MonoBehaviour:
   acceleration: 10
   maxSpeed: 2000
   rb: {fileID: 2491414453773027505}
+  flame: {fileID: 0}
 --- !u!54 &2491414453773027505
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4974,7 +4976,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
+  m_Size: {x: 7.5, y: 5, z: 7.5}
   m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &2491414453943232131
 GameObject:
