@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
+    [SerializeField]
     private int silverCount = 0;
     private int goldCount = 0;
 
@@ -41,4 +42,8 @@ public class InventoryManager : MonoBehaviour
     public void DecrementGold() {
         updateGold(-75);
     }
+
+    public int GetSilver() { return silverCount; }
+
+    public int GetGold() { return goldCount; }
 }

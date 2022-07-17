@@ -131,6 +131,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""4391586d-339c-459f-84f1-3be533be8152"",
                     ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",

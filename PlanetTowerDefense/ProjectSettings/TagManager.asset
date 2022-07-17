@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Enemies
+  - Turret
   layers:
   - Default
   - TransparentFX

@@ -8,9 +8,13 @@ public class TowerSpawner : MonoBehaviour
     [SerializeField] GameObject tower;
     [SerializeField] GameObject spawnGhost;
     [SerializeField] GameObject spawnObject;
+    [SerializeField] GameManager gameManager;
+
+    [SerializeField] int towerPrice;
 
     private void Start()
     {
+        
         Camera cam = Camera.main;
     }
 
@@ -25,26 +29,54 @@ public class TowerSpawner : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-            RaycastHit hit;
+            
 
-            if(Physics.Raycast(ray, out hit))
-            {
-                Instantiate(tower, hit.point, Quaternion.LookRotation(hit.point, hit.normal));
-                Debug.DrawLine(hit.point, hit.normal);
-                Debug.Log(hit.normal);
-            }
-            Debug.DrawRay(hit.point, hit.normal);
+                Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+                RaycastHit hit;
+                
+                
+                if (Physics.Raycast(ray, out hit)) 
+                {
+                    if (!hit.collider.gameObject.CompareTag("Turret"))
+                    {
+                    if (gameManager.GetComponent<InventoryManager>().GetSilver() >= towerPrice)
+                    {
+                        Instantiate(tower, hit.point, Quaternion.LookRotation(hit.point, hit.normal));
+                        gameManager.GetComponent<InventoryManager>().updateSilver(-towerPrice);
+
+                        Debug.DrawLine(hit.point, hit.normal);
+                        Debug.Log(hit.normal);
+                    }
+                }
+                
+
+                }
+                
+            
+
         }
     }
 
     private void moveSpawnGhost()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
+        if (gameManager.GetComponent<InventoryManager>().GetSilver() >= towerPrice)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
 
-        Physics.Raycast(ray, out hit);
-        spawnGhost.transform.SetPositionAndRotation(hit.point, Quaternion.LookRotation(hit.point, hit.normal));
+            Physics.Raycast(ray, out hit);
+
+            if (hit.collider.gameObject.CompareTag("Turret"))
+            {
+                spawnGhost.transform.position = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                spawnGhost.transform.SetPositionAndRotation(hit.point, Quaternion.LookRotation(hit.point, hit.normal));
+            }
+        }
+        
+        
     }
 
 }
