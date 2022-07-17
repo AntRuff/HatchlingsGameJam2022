@@ -12,6 +12,12 @@ public class GoonSpawnerScript : MonoBehaviour
     private GameObject prefab;
     [SerializeField]
     private Transform target;
+    private Vector3 start;
+
+    private void Start()
+    {
+        start = transform.position;
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,6 +36,7 @@ public class GoonSpawnerScript : MonoBehaviour
             {
                 curSpawnTime += Time.deltaTime;
             }
+            transform.position = start + new Vector3(Mathf.Cos(curSpawnTime)*5, 0, 0); 
         }
     }
 }
