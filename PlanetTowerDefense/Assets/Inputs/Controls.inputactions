@@ -7,15 +7,15 @@
             "actions": [
                 {
                     "name": "Movement",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "8d7267ed-3942-4f16-b8fa-7f11b7d02f6b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "Rotate",
+                    "name": "RotateCamera",
                     "type": "Value",
                     "id": "ccd6d1f5-076f-440e-a931-d1c0576e0866",
                     "expectedControlType": "Vector2",
@@ -33,38 +33,20 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "IncrementSilver",
-                    "type": "Button",
-                    "id": "1c3eb5bd-1b3d-4b93-bfe5-22edf07f54f6",
+                    "name": "RotatePlayer",
+                    "type": "Value",
+                    "id": "602deea6-a5a8-454d-9f1c-f2f49dd5226d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "IncrementGold",
-                    "type": "Button",
-                    "id": "19117a71-a11a-4ee0-a365-4bd417932464",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "DecrementGold",
-                    "type": "Button",
-                    "id": "8f82f4da-d1e6-498f-82d0-6d4aee72c63d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
+                    "name": "3D Vector",
                     "id": "5e0fe77c-01d1-46c7-b0c5-61e17627ed21",
-                    "path": "2DVector",
+                    "path": "3DVector",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "",
@@ -73,7 +55,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
+                    "name": "forward",
                     "id": "dca38ac7-b545-42ba-ba92-2b05fc8a6f91",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -84,7 +66,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
+                    "name": "backward",
                     "id": "f9bc164b-6519-4723-9437-0e2b218492ad",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -95,7 +77,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
+                    "name": "Left",
                     "id": "08cf78c9-aa34-4363-9946-b8229d4c289b",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -106,9 +88,31 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
+                    "name": "Right",
                     "id": "b738f046-62dc-4387-b283-b4c2089fc19c",
                     "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "up",
+                    "id": "5dba92a0-59c4-4845-aae9-7621d3dc4cb9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "4391586d-339c-459f-84f1-3be533be8152",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -123,14 +127,14 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "RotateCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "d389dc5d-ee72-41a1-b028-8e3147b9be5c",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -139,37 +143,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "2d6d00d6-9522-4c80-9c96-c6fa9b1c219f",
-                    "path": "<Keyboard>/t",
+                    "name": "1D Axis",
+                    "id": "eca3ef2f-3a01-447a-8ff9-32380153cd5e",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "IncrementSilver",
-                    "isComposite": false,
+                    "action": "RotatePlayer",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "392d7873-c124-4926-814d-8d65d6600cf0",
-                    "path": "<Keyboard>/y",
+                    "name": "negative",
+                    "id": "298148a9-08da-46f1-84be-34e5896dd825",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "IncrementGold",
+                    "action": "RotatePlayer",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "50e3f340-7cf4-4e33-8348-fecab2c30e59",
-                    "path": "<Keyboard>/u",
+                    "name": "positive",
+                    "id": "550b910d-7b8d-47e7-9457-1fbeca9e0c1c",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DecrementGold",
+                    "action": "RotatePlayer",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 }
             ]
         }

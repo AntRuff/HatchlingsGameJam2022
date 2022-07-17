@@ -29,15 +29,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""8d7267ed-3942-4f16-b8fa-7f11b7d02f6b"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Rotate"",
+                    ""name"": ""RotateCamera"",
                     ""type"": ""Value"",
                     ""id"": ""ccd6d1f5-076f-440e-a931-d1c0576e0866"",
                     ""expectedControlType"": ""Vector2"",
@@ -55,38 +55,20 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""IncrementSilver"",
-                    ""type"": ""Button"",
-                    ""id"": ""1c3eb5bd-1b3d-4b93-bfe5-22edf07f54f6"",
+                    ""name"": ""RotatePlayer"",
+                    ""type"": ""Value"",
+                    ""id"": ""602deea6-a5a8-454d-9f1c-f2f49dd5226d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""IncrementGold"",
-                    ""type"": ""Button"",
-                    ""id"": ""19117a71-a11a-4ee0-a365-4bd417932464"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""DecrementGold"",
-                    ""type"": ""Button"",
-                    ""id"": ""8f82f4da-d1e6-498f-82d0-6d4aee72c63d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""3D Vector"",
                     ""id"": ""5e0fe77c-01d1-46c7-b0c5-61e17627ed21"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""3DVector"",
                     ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
@@ -95,7 +77,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
+                    ""name"": ""forward"",
                     ""id"": ""dca38ac7-b545-42ba-ba92-2b05fc8a6f91"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -106,7 +88,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
+                    ""name"": ""backward"",
                     ""id"": ""f9bc164b-6519-4723-9437-0e2b218492ad"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
@@ -117,7 +99,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
+                    ""name"": ""Left"",
                     ""id"": ""08cf78c9-aa34-4363-9946-b8229d4c289b"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
@@ -128,9 +110,31 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
+                    ""name"": ""Right"",
                     ""id"": ""b738f046-62dc-4387-b283-b4c2089fc19c"",
                     ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5dba92a0-59c4-4845-aae9-7621d3dc4cb9"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""4391586d-339c-459f-84f1-3be533be8152"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -145,14 +149,14 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""RotateCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""d389dc5d-ee72-41a1-b028-8e3147b9be5c"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -161,37 +165,37 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""2d6d00d6-9522-4c80-9c96-c6fa9b1c219f"",
-                    ""path"": ""<Keyboard>/t"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""eca3ef2f-3a01-447a-8ff9-32380153cd5e"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""IncrementSilver"",
-                    ""isComposite"": false,
+                    ""action"": ""RotatePlayer"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""392d7873-c124-4926-814d-8d65d6600cf0"",
-                    ""path"": ""<Keyboard>/y"",
+                    ""name"": ""negative"",
+                    ""id"": ""298148a9-08da-46f1-84be-34e5896dd825"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""IncrementGold"",
+                    ""action"": ""RotatePlayer"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""50e3f340-7cf4-4e33-8348-fecab2c30e59"",
-                    ""path"": ""<Keyboard>/u"",
+                    ""name"": ""positive"",
+                    ""id"": ""550b910d-7b8d-47e7-9457-1fbeca9e0c1c"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DecrementGold"",
+                    ""action"": ""RotatePlayer"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -201,11 +205,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
+        m_Player_RotateCamera = m_Player.FindAction("RotateCamera", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_IncrementSilver = m_Player.FindAction("IncrementSilver", throwIfNotFound: true);
-        m_Player_IncrementGold = m_Player.FindAction("IncrementGold", throwIfNotFound: true);
-        m_Player_DecrementGold = m_Player.FindAction("DecrementGold", throwIfNotFound: true);
+        m_Player_RotatePlayer = m_Player.FindAction("RotatePlayer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -266,21 +268,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_Rotate;
+    private readonly InputAction m_Player_RotateCamera;
     private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_IncrementSilver;
-    private readonly InputAction m_Player_IncrementGold;
-    private readonly InputAction m_Player_DecrementGold;
+    private readonly InputAction m_Player_RotatePlayer;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
+        public InputAction @RotateCamera => m_Wrapper.m_Player_RotateCamera;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @IncrementSilver => m_Wrapper.m_Player_IncrementSilver;
-        public InputAction @IncrementGold => m_Wrapper.m_Player_IncrementGold;
-        public InputAction @DecrementGold => m_Wrapper.m_Player_DecrementGold;
+        public InputAction @RotatePlayer => m_Wrapper.m_Player_RotatePlayer;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -293,21 +291,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Rotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                @Rotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                @Rotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
+                @RotateCamera.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateCamera;
+                @RotateCamera.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateCamera;
+                @RotateCamera.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateCamera;
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @IncrementSilver.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementSilver;
-                @IncrementSilver.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementSilver;
-                @IncrementSilver.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementSilver;
-                @IncrementGold.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementGold;
-                @IncrementGold.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementGold;
-                @IncrementGold.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncrementGold;
-                @DecrementGold.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecrementGold;
-                @DecrementGold.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecrementGold;
-                @DecrementGold.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecrementGold;
+                @RotatePlayer.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotatePlayer;
+                @RotatePlayer.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotatePlayer;
+                @RotatePlayer.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotatePlayer;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -315,21 +307,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @Rotate.started += instance.OnRotate;
-                @Rotate.performed += instance.OnRotate;
-                @Rotate.canceled += instance.OnRotate;
+                @RotateCamera.started += instance.OnRotateCamera;
+                @RotateCamera.performed += instance.OnRotateCamera;
+                @RotateCamera.canceled += instance.OnRotateCamera;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @IncrementSilver.started += instance.OnIncrementSilver;
-                @IncrementSilver.performed += instance.OnIncrementSilver;
-                @IncrementSilver.canceled += instance.OnIncrementSilver;
-                @IncrementGold.started += instance.OnIncrementGold;
-                @IncrementGold.performed += instance.OnIncrementGold;
-                @IncrementGold.canceled += instance.OnIncrementGold;
-                @DecrementGold.started += instance.OnDecrementGold;
-                @DecrementGold.performed += instance.OnDecrementGold;
-                @DecrementGold.canceled += instance.OnDecrementGold;
+                @RotatePlayer.started += instance.OnRotatePlayer;
+                @RotatePlayer.performed += instance.OnRotatePlayer;
+                @RotatePlayer.canceled += instance.OnRotatePlayer;
             }
         }
     }
@@ -337,10 +323,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnRotate(InputAction.CallbackContext context);
+        void OnRotateCamera(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnIncrementSilver(InputAction.CallbackContext context);
-        void OnIncrementGold(InputAction.CallbackContext context);
-        void OnDecrementGold(InputAction.CallbackContext context);
+        void OnRotatePlayer(InputAction.CallbackContext context);
     }
 }
