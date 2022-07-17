@@ -6,7 +6,7 @@ public class DayNightManager : MonoBehaviour
 {
     public List<GameObject> goons;
     [SerializeField]
-    private float dayLength = 2000f;
+    private float dayLength = 200f;
     [SerializeField]
     private float curTime = 0;
     [SerializeField]
@@ -21,6 +21,10 @@ public class DayNightManager : MonoBehaviour
     [SerializeField]
     private float tranTime = 5;
     private float curTranTime = 0;
+    [SerializeField]
+    private List<Silver> ilver;
+    [SerializeField]
+    private List<Gold> gold;
 
     private void Awake()
     {
@@ -39,6 +43,10 @@ public class DayNightManager : MonoBehaviour
             foreach (GoonSpawnerScript i in spawners)
             {
                 i.isNight = isNight;
+                if (isNight)
+                {
+                    i.TURNUPTHEHEAT();
+                }
             }
             curTime = 0;
             curTranTime = 0;
@@ -49,6 +57,22 @@ public class DayNightManager : MonoBehaviour
                     Destroy(g);
                 }
                 goons.Clear();
+                foreach(Silver i in ilver)
+                {
+                    if (!i.gameObject.activeSelf)
+                    {
+                        i.gameObject.SetActive(true);
+                        i.Replish();
+                    }
+                }
+                foreach (Gold g in gold)
+                {
+                    if (!g.gameObject.activeSelf)
+                    {
+                        g.gameObject.SetActive(true);
+                        g.Replish();
+                    }
+                }
             }
         }
         if (isNight && curTranTime < tranTime)

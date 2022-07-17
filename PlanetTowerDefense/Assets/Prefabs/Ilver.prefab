@@ -4894,6 +4894,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6094852638323610726}
+  - component: {fileID: 4074652613590040976}
+  - component: {fileID: 2419663763207217004}
   m_Layer: 0
   m_Name: Ilver
   m_TagString: Untagged
@@ -4917,3 +4919,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4074652613590040976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6908122166027472604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ea16430ef451a42a7aee65b1f78545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactText: 
+  inventory: {fileID: 3708668963764071541, guid: 09356e3f672383544a53d7e177d52251, type: 3}
+  mineAmount: 25
+  maxMines: 3
+--- !u!65 &2419663763207217004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6908122166027472604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
