@@ -24,8 +24,6 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-    
-
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.GetComponent<Interactable>()){
             canInteract = false;
@@ -35,25 +33,26 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
+    public void Exhaust()
+    {
+        action = null;
+        interactText.text = "";
+    }
+
+    public void Refresh()
+    {
+        canInteract = true;
+        interactText.enabled = true;
+    }
+
     public void CallInteract(){
         if (!canInteract){
             return;
         }
         if (action){
+            canInteract = false;
+            interactText.enabled = false;
             StartCoroutine(action.Interact());
-            Debug.Log("Finished Interaction");
-            StartCoroutine(InteractionCooldown());
-            Debug.Log("Can Interact again");
         }
     }
-
-    private IEnumerator InteractionCooldown(){
-        canInteract = false;
-        interactText.enabled = false;
-        yield return new WaitForSeconds(interactionTimer);
-        canInteract = true;
-        interactText.enabled = true;
-    }
-
-
 }

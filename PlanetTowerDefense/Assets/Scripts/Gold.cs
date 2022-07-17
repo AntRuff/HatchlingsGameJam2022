@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Silver : Interactable {
-
+public class Gold : Interactable
+{
     [SerializeField] private InventoryManager inventory;
     public int mineAmount = 25;
     private int minesRemaining;
@@ -16,11 +16,12 @@ public class Silver : Interactable {
         textCopy = interactText;
     }
 
-    public override IEnumerator Interact(){
+    public override IEnumerator Interact()
+    {
 
         if (minesRemaining > 0)
         {
-            inventory.updateSilver(mineAmount);
+            inventory.updateGold(mineAmount);
             minesRemaining--;
             if (minesRemaining == 0)
             {

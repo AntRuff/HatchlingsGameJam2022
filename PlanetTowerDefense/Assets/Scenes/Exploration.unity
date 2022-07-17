@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 8106043}
   - component: {fileID: 8106044}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,6 +686,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: Mine Silver
+  inventory: {fileID: 8106044}
+  mineAmount: 25
+  maxMines: 3
 --- !u!65 &311259749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -827,7 +830,7 @@ GameObject:
   - component: {fileID: 577577793}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
