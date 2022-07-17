@@ -12,12 +12,20 @@ public class CameraManager : MonoBehaviour
     public Transform rest;
     public Transform spawn;
     public Canvas button;
+    public Camera winCam;
+    public static CameraManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         playerCam.enabled = true;
         stratCam.enabled = false;
+        winCam.enabled = false;
     }
 
     public void SwapToStrat()
@@ -38,5 +46,17 @@ public class CameraManager : MonoBehaviour
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         player.GetComponent<PlayerManager>().enabled = true;
         stratCam.enabled = false;
+    }
+
+    public void SwapToWin()
+    {
+        playerCam.enabled = false;
+        stratCam.enabled = false;
+        winCam.enabled = true;
+        player.transform.parent = rest;
+        player.transform.position = rest.position;
+        player.transform.rotation = rest.rotation;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        player.GetComponent<PlayerManager>().enabled = false;
     }
 }
