@@ -41,7 +41,7 @@ public class EnemyBehavoir : MonoBehaviour
     {
        if(collision.gameObject.transform == target)
         {
-            //PUT DAMAGE CODE HERE
+            Porpoise.Instance.TakeDamage();
             TakeDamage(999);
         }
     }
