@@ -17,9 +17,9 @@ public class CameraMovement : MonoBehaviour
 
     void Awake() => controls = new Controls();
 
-    void OnEnable() => controls.Player.Enable();
+    void OnEnable() => controls.StrategyControl.Enable();
 
-    void OnDisable() => controls.Player.Disable();
+    void OnDisable() => controls.StrategyControl.Disable();
 
     private void Start()
     {
@@ -37,7 +37,7 @@ public class CameraMovement : MonoBehaviour
         {
             Vector3 Direction = previousPosition - cam.ScreenToViewportPoint(Mouse.current.position.ReadValue());
 
-            cam.transform.position = new Vector3();
+            //cam.transform.position = new Vector3();
 
 
             cam.transform.Rotate(new Vector3(x: 1, y: 0, z: 0), angle: Direction.y * 100);
@@ -73,6 +73,6 @@ public class CameraMovement : MonoBehaviour
             z = movementInput.y
         }.normalized;
 
-        cam.transform.Translate (movement * 10f * Time.deltaTime);
+        cam.transform.Translate(movement * 10f * Time.deltaTime);
     }
 }
