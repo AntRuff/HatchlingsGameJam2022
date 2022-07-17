@@ -44,7 +44,7 @@ public class Porpoise : Interactable
     {
         while (true)
         {
-            gameObject.transform.Translate(Vector3.up*Time.deltaTime);
+            gameObject.transform.Translate(Vector3.up*50*Time.deltaTime);
             yield return null;
         }
 

@@ -55,6 +55,8 @@ public class CameraManager : MonoBehaviour
         winCam.enabled = true;
         player.transform.parent = rest;
         player.transform.position = rest.position;
+        player.transform.rotation = rest.rotation;
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        player.GetComponent<PlayerManager>().enabled = false;
     }
 }
