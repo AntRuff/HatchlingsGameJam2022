@@ -4906,6 +4906,7 @@ GameObject:
   - component: {fileID: 7207655347609219361}
   - component: {fileID: 7173113962088261173}
   - component: {fileID: -6412359353522952}
+  - component: {fileID: -7285813722121362682}
   m_Layer: 0
   m_Name: Goon
   m_TagString: Enemies
@@ -4955,8 +4956,24 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-7285813722121362682
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020186312197893019}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &9133094820188991727
 PrefabInstance:
   m_ObjectHideFlags: 0

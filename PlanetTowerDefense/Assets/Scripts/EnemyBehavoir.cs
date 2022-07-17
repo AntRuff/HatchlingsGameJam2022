@@ -34,4 +34,13 @@ public class EnemyBehavoir : MonoBehaviour
             TakeDamage(1);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+       if(collision.gameObject.transform == target)
+        {
+            //PUT DAMAGE CODE HERE
+            TakeDamage(999);
+        }
+    }
 }
