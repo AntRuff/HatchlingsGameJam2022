@@ -9619,6 +9619,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ea16430ef451a42a7aee65b1f78545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &1741285143 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5330559181526308597, guid: 09356e3f672383544a53d7e177d52251, type: 3}
+  m_PrefabInstance: {fileID: 5330559181500034917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1747809710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12570,6 +12575,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: Enter Spaceship
+  engine: {fileID: 1741285143}
+  engineRumble: {fileID: 5330559181500034923}
 --- !u!82 &5330559181500034923
 AudioSource:
   m_ObjectHideFlags: 0

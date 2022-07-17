@@ -34,8 +34,19 @@ public class Porpoise : Interactable
 
     public void WinGame()
     {
-        gameObject.transform.Translate(Vector3.up * 100);
+        StartCoroutine(BoldlyGo());
         engine.Play();
         engineRumble.Play();
+    }
+
+    private IEnumerator BoldlyGo()
+    {
+        while (true)
+        {
+            gameObject.transform.Translate(Vector3.up*Time.deltaTime);
+            yield return null;
+        }
+
+
     }
 }
