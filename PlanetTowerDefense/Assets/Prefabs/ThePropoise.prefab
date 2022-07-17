@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goons: []
   dayLength: 200
-  curTime: 0
+  curTime: 100
   isNight: 0
   dayLight: {fileID: 0}
   spawners:
