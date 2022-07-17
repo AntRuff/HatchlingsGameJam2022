@@ -30,7 +30,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
-            //previousPosition = cam.ScreenToViewportPoint(Mouse.current.position.ReadValue());
+            previousPosition = cam.ScreenToViewportPoint(Mouse.current.position.ReadValue());
         }
 
         if (Mouse.current.rightButton.isPressed)
