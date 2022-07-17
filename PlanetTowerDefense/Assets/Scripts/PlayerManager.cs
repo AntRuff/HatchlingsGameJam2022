@@ -59,6 +59,8 @@ public class PlayerManager : MonoBehaviour
         else {
             movement = curDir;
         }
+        transform.Translate(curDir * Time.deltaTime * moveSpeed);
+
 
         /*Vector3 SetGroundDir = FloorAngleCheck();
         GroundDir = Vector3.Lerp(GroundDir, SetGroundDir, delta * GravityRotationSpeed);
@@ -68,8 +70,8 @@ public class PlayerManager : MonoBehaviour
 
         //transform.Translate(movement.normalized * moveSpeed * delta);
 
-        if (moveSpeed == 0) { rb.AddRelativeForce(-movement.normalized * moveSpeed * delta, ForceMode.Acceleration); }
-        else { rb.AddRelativeForce(movement.normalized * moveSpeed * delta, ForceMode.Acceleration); }
+        /*if (moveSpeed == 0) { rb.AddRelativeForce(-movement.normalized * moveSpeed * delta, ForceMode.Acceleration); }
+        else { rb.AddRelativeForce(movement.normalized * moveSpeed * delta, ForceMode.Acceleration); }*/
     }
 
     //Updates Camera and player rotation every frame

@@ -29,6 +29,11 @@ public class DayNightManager : MonoBehaviour
     private AudioSource day;
     [SerializeField]
     private AudioSource night1;
+    [SerializeField]
+    private AudioSource night2;
+    [SerializeField]
+    private AudioSource night3;
+
 
     private void Awake()
     {
@@ -49,6 +54,7 @@ public class DayNightManager : MonoBehaviour
                 i.isNight = isNight;
                 if (isNight)
                 {
+                    i.ForceSpawn();
                     i.TURNUPTHEHEAT();
                 }
             }
@@ -84,6 +90,8 @@ public class DayNightManager : MonoBehaviour
             dayLight.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(nightAngle, -30, 0)), curTranTime);
             day.volume = Mathf.Lerp(1, 0, curTranTime);
             night1.volume = Mathf.Lerp(0, 1, curTranTime);
+            night2.volume = Mathf.Lerp(0, 1, curTranTime);
+            night3.volume = Mathf.Lerp(0, 1, curTranTime);
             curTranTime += Time.deltaTime;
 
         } else if (curTranTime < tranTime)
@@ -91,6 +99,8 @@ public class DayNightManager : MonoBehaviour
             dayLight.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(dayAngle, -30, 0)), curTranTime);
             day.volume = Mathf.Lerp(0, 1, curTranTime);
             night1.volume = Mathf.Lerp(1, 0, curTranTime);
+            night2.volume = Mathf.Lerp(1, 0, curTranTime);
+            night3.volume = Mathf.Lerp(1, 0, curTranTime);
             curTranTime += Time.deltaTime;
         }
     }

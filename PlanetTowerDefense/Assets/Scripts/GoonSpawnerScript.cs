@@ -39,7 +39,13 @@ public class GoonSpawnerScript : MonoBehaviour
             transform.position = start + new Vector3(Mathf.Cos(curSpawnTime)*5, 0, 0); 
         }
     }
-    
+
+    public void ForceSpawn()
+    {
+        curSpawnTime = spawnTime;
+    }
+
+
     public void TURNUPTHEHEAT()
     {
         if(spawnTime > 5)
