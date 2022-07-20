@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour
 
     public AudioSource rockets;
 
+    public bool movementEnabled = true;
+
     private Vector3 curDir = Vector3.zero;
     /*public Transform[] GroundChecks;
 
@@ -39,9 +41,12 @@ public class PlayerManager : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate(){
-        RotateCamera();
-        RotatePlayer();
-        Move();
+        if (movementEnabled)
+        {
+            Move();
+            RotateCamera();
+            RotatePlayer();
+        }
     }
 
     //Updates Player position every frame.
@@ -49,6 +54,7 @@ public class PlayerManager : MonoBehaviour
         float delta = Time.deltaTime;
 
         var movementInput = controls.Player.Movement.ReadValue<Vector3>();
+        Debug.Log("player movement input is " + controls);
         var movement = Vector3.zero;
         if (Vector3.Distance(movementInput, Vector3.zero) > 0.1f){
             curDir = movement;
@@ -60,11 +66,15 @@ public class PlayerManager : MonoBehaviour
             flame.Pause();
             flame.Clear();
         }
-        movement = new Vector3{
+        movement = new Vector3
+        {
             x = movementInput.x,
             y = movementInput.y,
             z = movementInput.z
         };
+
+
+        Debug.Log(movementInput);
         transform.Translate(movement * Time.deltaTime * moveSpeed);
 
 
@@ -105,6 +115,18 @@ public class PlayerManager : MonoBehaviour
         TotalRotation.z += RotationZ;
 
         transform.rotation = Quaternion.Euler(TotalRotation);
+    }
+
+    public void EnablePlayerControls()
+    {
+        controls.Player.Enable();
+        Debug.Log("enable controls");
+    }
+
+    public void DisablePlayerControls()
+    {
+        controls.Player.Disable();
+        Debug.Log("disablePlayerControls");
     }
 
     /*//Rotates player's up to match floor

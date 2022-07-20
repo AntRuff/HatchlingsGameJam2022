@@ -28,7 +28,7 @@ public class Porpoise : Interactable
     public override IEnumerator Interact()
     {
         FindObjectOfType<CameraManager>().SwapToStrat();
-        FindObjectOfType<InteractionManager>().Exhaust();
+        //FindObjectOfType<InteractionManager>().Exhaust();
         yield return null;
     }
 

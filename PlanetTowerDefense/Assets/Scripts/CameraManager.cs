@@ -14,6 +14,9 @@ public class CameraManager : MonoBehaviour
     public Canvas button;
     public Camera winCam;
     public static CameraManager Instance;
+    public CameraMovement move;
+
+    private GameManager game;
 
     private void Awake()
     {
@@ -26,18 +29,23 @@ public class CameraManager : MonoBehaviour
         playerCam.enabled = true;
         stratCam.enabled = false;
         winCam.enabled = false;
+        move.enabled = false;
     }
 
     public void SwapToStrat()
     {
         stratCam.enabled = true;
         playerCam.enabled = false;
+        move.enabled = true;
         player.transform.position = rest.position;
         button.gameObject.SetActive(true);
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        player.GetComponent<PlayerManager>().enabled = false;
+        /*player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        player.GetComponent<PlayerManager>().enabled = false;*/
+        //player.SetActive(false);
+        player.GetComponent<PlayerManager>().movementEnabled = false;
         gameObject.GetComponent<TowerSpawner>().enabled = true;
         Debug.Log(gameObject.GetComponent<TowerSpawner>().enabled);
+        //player.GetComponent<PlayerManager>().DisablePlayerControls();
     }
 
     public void SwapToPlayer()
@@ -45,10 +53,14 @@ public class CameraManager : MonoBehaviour
         playerCam.enabled = true;
         button.gameObject.SetActive(false);
         player.transform.position = spawn.position;
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        player.GetComponent<PlayerManager>().enabled = true;
+        move.enabled = false;
+        /*player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        player.GetComponent<PlayerManager>().enabled = true;*/
+        //player.SetActive(true);
+        player.GetComponent<PlayerManager>().movementEnabled = true;
         stratCam.enabled = false;
         gameObject.GetComponent<TowerSpawner>().enabled = false;
+        //player.GetComponent <PlayerManager>().EnablePlayerControls();
     }
 
     public void SwapToWin()
