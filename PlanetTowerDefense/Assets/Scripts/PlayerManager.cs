@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float acceleration = 10f;
     [SerializeField] private float maxSpeed = 30f;
 
+    [SerializeField] private Transform restPosition;
+
     [SerializeField] private Rigidbody rb;
 
     public AudioSource rockets;
@@ -46,6 +48,8 @@ public class PlayerManager : MonoBehaviour
             Move();
             RotateCamera();
             RotatePlayer();
+        } else {
+            this.transform.position = restPosition.position;
         }
     }
 
@@ -73,8 +77,6 @@ public class PlayerManager : MonoBehaviour
             z = movementInput.z
         };
 
-
-        Debug.Log(movementInput);
         transform.Translate(movement * Time.deltaTime * moveSpeed);
 
 
