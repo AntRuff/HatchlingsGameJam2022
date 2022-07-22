@@ -18,6 +18,8 @@ public class Porpoise : Interactable
     public Text healthView;
     [SerializeField]
     private Canvas lossCanvas;
+    [SerializeField]
+    private Text winText;
 
     private void Awake()
     {
@@ -56,6 +58,7 @@ public class Porpoise : Interactable
         StartCoroutine(BoldlyGo());
         engine.Play();
         engineRumble.Play();
+        winText.enabled = true;
     }
 
     private IEnumerator BoldlyGo()
